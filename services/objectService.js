@@ -24,7 +24,8 @@ async function uploadObject(bucketName, file) {
   } catch (err) {
     throw { status: 500, message: "Error compressing file." };
   }
-  const originalName = file.originalname;
+  // const originalName = file.originalname;
+  const originalName = Buffer.from(file.originalname, 'latin1').toString('utf8');
   const filePath = path.join(bucketDir, originalName + '.gz');
   try {
     await fs.writeFile(filePath, compressedBuffer);
