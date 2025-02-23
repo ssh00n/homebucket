@@ -20,7 +20,8 @@ const options = {
     },
     servers: [
       {
-        url: `http://${process.env.HOST}:${port}`,
+        url: `https://${process.env.HOST}`,
+        
       },
     ],
   },
