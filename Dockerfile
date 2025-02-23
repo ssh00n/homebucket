@@ -13,7 +13,7 @@ COPY .env ./
 COPY . .
 
 
-RUN mkdir -p db
+RUN mkdir -p db-data
 RUN mkdir -p storage
 
 
