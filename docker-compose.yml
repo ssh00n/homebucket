@@ -1,0 +1,21 @@
+services:
+  homebucket:
+    image: homebucket
+    container_name: homebucket
+    restart: always
+    environment:
+      - LANG=ko_KR.UTF-8
+      - LC_ALL=ko_KR.UTF-8
+      - VIRTUAL_HOST=homebucket.ssh00n.site
+      - LETSENCRYPT_HOST=homebucket.ssh00n.site
+      - LETSENCRYPT_EMAIL=seunghunshin1284@gmail.com
+    volumes:
+      - ./data/storage:/app/storage
+    expose:
+      - "8081"
+    networks:
+      - proxy
+
+networks:
+  proxy:
+    external: true
