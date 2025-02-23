@@ -75,7 +75,8 @@ async function downloadObject(bucketName, objectName, res) {
   } catch (err) {
     throw { status: 404, message: "File not found on disk." };
   }
-  res.setHeader('Content-Disposition', `attachment; filename="${objectName}"`);
+  const encodedFilename = encodeURIComponent(objectName);
+  res.setHeader('Content-Disposition', `attachment; filename*=UTF-8''${encodedFilename}`);
   const readStream = fsSync.createReadStream(filePath);
   const gunzipStream = zlib.createGunzip();
   readStream.pipe(gunzipStream).pipe(res);
