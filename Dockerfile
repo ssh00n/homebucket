@@ -13,8 +13,8 @@ COPY .env ./
 COPY . .
 
 
-RUN mkdir -p db-data
-RUN mkdir -p storage
+RUN mkdir -p /data/db-data
+RUN mkdir -p /data/storage
 
 
 EXPOSE 8081
